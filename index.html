@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#8f6a45">
+    <meta name="description" content="Handmade — تصميمات هاند ميد فاخرة: مكرمية، خيش، مرايات مزينة وقطع ديكور مصنوعة بحب. اطلب الآن عبر واتساب.">
+    <title>Handmade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- شريط إعلاني متحرك -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="announcement-track">
+            <span data-ar="🎁 شحن مجاني للطلبات فوق 500 جنيه" data-en="🎁 Free shipping on orders over 500 EGP">🎁 شحن مجاني للطلبات فوق 500 جنيه</span>
+            <span data-ar="✨ تصميمات هاند ميد حصرية بجودة فاخرة" data-en="✨ Exclusive handmade designs with premium quality">✨ تصميمات هاند ميد حصرية بجودة فاخرة</span>
+            <span data-ar="🛍️ اطلب الآن عبر واتساب بسهولة" data-en="🛍️ Order now easily via WhatsApp">🛍️ اطلب الآن عبر واتساب بسهولة</span>
+            <span data-ar="🎁 شحن مجاني للطلبات فوق 500 جنيه" data-en="🎁 Free shipping on orders over 500 EGP">🎁 شحن مجاني للطلبات فوق 500 جنيه</span>
+            <span data-ar="✨ تصميمات هاند ميد حصرية بجودة فاخرة" data-en="✨ Exclusive handmade designs with premium quality">✨ تصميمات هاند ميد حصرية بجودة فاخرة</span>
+            <span data-ar="🛍️ اطلب الآن عبر واتساب بسهولة" data-en="🛍️ Order now easily via WhatsApp">🛍️ اطلب الآن عبر واتساب بسهولة</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <!-- زر الهامبرغر للموبايل -->
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <div class="logo" data-ar="Handmade" data-en="Handmade">Handmade</div>
+
+        <nav class="nav" id="mainNav">
+            <a href="#home"       data-ar="الرئيسية"    data-en="Home">الرئيسية</a>
+            <a href="#products"   data-ar="المنتجات"    data-en="Products">المنتجات</a>
+            <a href="#categories" data-ar="الأقسام"     data-en="Categories">الأقسام</a>
+            <a href="#about"      data-ar="من نحن"      data-en="About">من نحن</a>
+            <a href="#contact"    data-ar="تواصل"       data-en="Contact">تواصل</a>
+            <a href="#favorites"  data-ar="المفضلة ❤️"  data-en="Favorites ❤️">المفضلة ❤️</a>
+            <a href="#myorders" id="navMyOrders">طلباتي 📦</a>
+        </nav>
+
+        <div class="header-actions">
+            <!-- زر السلة -->
+            <button class="cart-btn" id="cartBtn" aria-label="Cart" data-ar-label="السلة" data-en-label="Cart">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span class="cart-count" id="cartCount" aria-hidden="true">0</span>
+            </button>
+
+            <button class="account-btn" id="accountBtn" aria-label="Account">
+                <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span id="accountLabel">تسجيل الدخول</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-badge" id="heroBadge">تصميمات يدوية فخمة</p>
+            <h1 id="heroTitle">تفاصيل صغيرة تصنع بيتًا أكثر جمالًا</h1>
+            <p class="hero-text" id="heroText">مكرمية، خيش، مرايات مزينة، وقطع ديكور مصنوعة بحب لتضيف لمسة أنيقة لكل ركن في منزلك.</p>
+            <div class="countdown-box">
+                <p class="countdown-label">⏳ العرض ينتهي خلال:</p>
+                <div class="countdown-timer">
+                    <div class="countdown-unit"><span id="cdHours">00</span><small>ساعة</small></div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-unit"><span id="cdMins">00</span><small>دقيقة</small></div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-unit"><span id="cdSecs">00</span><small>ثانية</small></div>
+                </div>
+            </div>
+            <a href="#products" class="btn-primary" id="heroBtn">شاهدي المنتجات</a>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section-title" id="categories">
+        <h2 data-ar="الأقسام" data-en="Categories">الأقسام</h2>
+        <p data-ar="كل ما يخص الهاند ميد بستايل هادي وفاخر." data-en="Everything handmade with a calm and luxurious style.">كل ما يخص الهاند ميد بستايل هادي وفاخر.</p>
+    </section>
+
+    <section class="categories">
+        <span class="category-btn active" data-category="all"    data-ar="كل المنتجات"    data-en="All Products">كل المنتجات</span>
+        <span class="category-btn"        data-category="مفارش"  data-ar="مفارش"           data-en="Table Mats">مفارش</span>
+        <span class="category-btn"        data-category="مرايات" data-ar="مرايات مزيّنة"  data-en="Decorated Mirrors">مرايات مزيّنة</span>
+        <span class="category-btn"        data-category="مكرمية" data-ar="مكرمية"          data-en="Macramé">مكرمية</span>
+        <span class="category-btn"        data-category="خيش"    data-ar="خيش"             data-en="Burlap">خيش</span>
+        <span class="category-btn"        data-category="ديكور"  data-ar="ديكورات منزلية" data-en="Home Décor">ديكورات منزلية</span>
+    </section>
+
+    <!-- Search -->
+    <section class="search-section">
+        <input type="text" id="searchInput" placeholder="ابحث عن منتج..." data-ar-placeholder="ابحث عن منتج..." data-en-placeholder="Search for a product...">
+    </section>
+
+    <!-- Products -->
+    <section class="section-title" id="products">
+        <h2 data-ar="المنتجات" data-en="Products">المنتجات</h2>
+        <p data-ar="أحدث المنتجات المتوفرة لدينا." data-en="The latest products available with us.">أحدث المنتجات المتوفرة لدينا.</p>
+    </section>
+
+    <section class="products">
+        <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <!-- Favorites -->
+    <section class="section-title" id="favorites">
+        <h2 data-ar="المفضلة ❤️" data-en="Favorites ❤️">المفضلة ❤️</h2>
+        <p data-ar="المنتجات التي أعجبتك ستظهر هنا." data-en="Products you liked will appear here.">المنتجات التي أعجبتك ستظهر هنا.</p>
+    </section>
+
+    <section class="products">
+        <div class="product-grid" id="favoriteGrid"></div>
+        <p class="empty-state" id="favoritesEmpty" data-ar="لا توجد منتجات في المفضلة بعد. اضغط على ♡ لإضافة ما يعجبك." data-en="No favorites yet. Tap ♡ to add the items you love.">لا توجد منتجات في المفضلة بعد. اضغط على ♡ لإضافة ما يعجبك.</p>
+    </section>
+
+    <!-- طلباتي -->
+    <section class="section-title" id="myorders">
+        <h2>طلباتي 📦</h2>
+        <p>تابعي حالة كل طلباتك أول بأول من هنا.</p>
+    </section>
+
+    <section class="orders-section">
+        <div id="ordersLoggedOut" class="orders-locked">
+            <p>سجّلي دخولك أو اعملي حساب جديد عشان تشوفي طلباتك وتتابعي حالتها.</p>
+            <button class="btn-primary" id="ordersLoginBtn">تسجيل الدخول / حساب جديد</button>
+        </div>
+        <div id="ordersList" class="orders-list hidden"></div>
+        <p class="empty-state hidden" id="ordersEmpty">لسه معملتيش أي طلب. اطلبي أول منتج وهيظهر هنا 🛍️</p>
+    </section>
+
+    <!-- شهادات العملاء -->
+    <section class="section-title">
+        <h2 data-ar="آراء عملاؤنا ⭐" data-en="Customer Reviews ⭐">آراء عملاؤنا ⭐</h2>
+        <p data-ar="ماذا قالوا عن منتجاتنا." data-en="What they said about our products.">ماذا قالوا عن منتجاتنا.</p>
+    </section>
+
+    <section class="reviews-section">
+        <div class="reviews-grid" id="reviewsGrid">
+            <p class="reviews-empty">جاري تحميل التقييمات...</p>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <h2 data-ar="من نحن" data-en="About Us">من نحن</h2>
+        <p data-ar="نقدم تصميمات هاند ميد راقية تناسب كل بيت، بجودة مميزة ولمسة أنيقة وسهلة الاختيار." data-en="We offer elegant handmade designs suitable for every home, with outstanding quality and an easy, stylish selection.">نقدم تصميمات هاند ميد راقية تناسب كل بيت، بجودة مميزة ولمسة أنيقة وسهلة الاختيار.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <p data-ar="للطلب عبر واتساب: 01288127665" data-en="Order via WhatsApp: 01288127665">للطلب عبر واتساب: 01288127665</p>
+        <p>© 2026 Handmade</p>
+    </footer>
+
+    <!-- زر واتساب -->
+    <a href="https://wa.me/201288127665" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="34" height="34" fill="white" aria-hidden="true">
+            <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.472 2.025 7.77L0 32l8.437-2.008A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 01-6.766-1.843l-.485-.287-5.007 1.192 1.215-4.876-.317-.502A13.267 13.267 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.862c-.398-.199-2.355-1.162-2.72-1.294-.365-.133-.63-.199-.896.199-.265.398-1.029 1.294-1.261 1.559-.232.265-.465.298-.863.1-.398-.2-1.681-.62-3.202-1.977-1.183-1.056-1.982-2.36-2.214-2.758-.232-.398-.025-.613.174-.811.179-.178.398-.465.597-.697.199-.232.265-.398.398-.663.133-.265.066-.497-.033-.697-.1-.199-.896-2.16-1.228-2.957-.323-.776-.651-.671-.896-.683l-.763-.013c-.265 0-.697.1-1.062.497-.365.398-1.394 1.362-1.394 3.322s1.427 3.854 1.626 4.12c.199.265 2.809 4.288 6.808 6.015.951.41 1.693.655 2.271.839.954.303 1.823.26 2.51.158.765-.114 2.355-.963 2.688-1.893.332-.93.332-1.727.232-1.893-.099-.166-.365-.265-.763-.464z"/>
+        </svg>
+    </a>
+
+    <!-- زر العودة للأعلى -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <!-- نافذة تكبير الصور -->
+    <div id="imageModal" class="image-modal">
+        <span id="closeModal" class="close-modal">×</span>
+        <img id="modalImage" class="modal-image" alt="">
+    </div>
+
+    <!-- سلة المشتريات -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Shopping cart">
+        <div class="cart-header">
+            <h3 data-ar="سلة المشتريات 🛒" data-en="Shopping Cart 🛒">سلة المشتريات 🛒</h3>
+            <button class="cart-close" id="cartClose" aria-label="Close cart">×</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-empty" id="cartEmpty" data-ar="سلتك فارغة حاليًا. أضف منتجاتك المفضلة وابدأ طلبك!" data-en="Your cart is empty. Add your favorite products and start your order!">سلتك فارغة حاليًا. أضف منتجاتك المفضلة وابدأ طلبك!</div>
+        <div class="cart-footer" id="cartFooter">
+            <div class="cart-total-row">
+                <span data-ar="الإجمالي" data-en="Total">الإجمالي</span>
+                <span class="cart-total" id="cartTotal">0</span>
+            </div>
+            <button class="cart-checkout" id="cartCheckout" data-ar="أكمل الطلب عبر واتساب" data-en="Checkout via WhatsApp">أكمل الطلب عبر واتساب</button>
+            <button class="cart-clear" id="cartClear" data-ar="إفراغ السلة" data-en="Clear cart">إفراغ السلة</button>
+        </div>
+    </aside>
+
+    <div id="toast" class="toast"></div>
+
+    <!-- نافذة تفاصيل المنتج -->
+    <div class="product-modal-overlay" id="productModalOverlay">
+        <div class="product-modal" id="productModal">
+            <button class="product-modal-close" id="productModalClose" aria-label="Close">×</button>
+            <div class="product-modal-body" id="productModalBody"><!-- يتم ملؤه ديناميكيًا --></div>
+        </div>
+    </div>
+
+    <!-- نافذة إتمام الطلب -->
+    <div class="checkout-modal-overlay" id="checkoutModalOverlay">
+        <div class="checkout-modal">
+            <button class="checkout-modal-close" id="checkoutModalClose" aria-label="Close">×</button>
+            <h3 data-ar="بيانات الطلب" data-en="Order Details">بيانات الطلب</h3>
+            <form id="checkoutForm">
+                <label data-ar="الاسم بالكامل" data-en="Full Name">الاسم بالكامل</label>
+                <input type="text" id="checkoutName" required>
+                <label data-ar="رقم الموبايل" data-en="Phone Number">رقم الموبايل</label>
+                <input type="tel" id="checkoutPhone" required placeholder="01xxxxxxxxx" pattern="[0-9]{10,15}">
+                <label data-ar="العنوان بالتفصيل" data-en="Full Address">العنوان بالتفصيل</label>
+                <textarea id="checkoutAddress" rows="3" required></textarea>
+                <label data-ar="ملاحظات (اختياري)" data-en="Notes (optional)">ملاحظات (اختياري)</label>
+                <textarea id="checkoutNotes" rows="2"></textarea>
+
+
+                <div class="checkout-coupon-block">
+                    <label class="checkout-section-label">كود خصم <span class="opt-tag">اختياري</span></label>
+                    <div class="coupon-input-row">
+                        <input type="text" id="checkoutCoupon" placeholder="أدخلي الكود هنا" autocomplete="off" enterkeyhint="done">
+                        <button type="button" id="applyCouponBtn" class="coupon-apply-btn">تطبيق</button>
+                    </div>
+                    <div id="couponFeedback" class="coupon-feedback"></div>
+                    <div id="checkoutDiscountRow" class="checkout-discount-row hidden">
+                        <span class="discount-label">🎉 تم تطبيق الخصم</span>
+                        <span id="checkoutDiscountVal" class="discount-val">− 0 ج.م</span>
+                    </div>
+                </div>
+
+                <label class="checkout-section-label">طريقة الدفع</label>
+                <div class="payment-methods" id="paymentMethods">
+                    <label class="payment-option active">
+                        <input type="radio" name="paymentMethod" value="cash" checked>
+                        <span>💵 الدفع عند الاستلام</span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="paymentMethod" value="wallet">
+                        <span>📱 اتصالات كاش</span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="paymentMethod" value="instapay">
+                        <span>🏦 إنستاباي</span>
+                    </label>
+                </div>
+                <div class="payment-instructions hidden" id="paymentInstructions"></div>
+
+                <button type="submit" class="checkout-submit-btn" data-ar="تأكيد الطلب عبر واتساب" data-en="Confirm Order via WhatsApp">تأكيد الطلب عبر واتساب</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة تسجيل الدخول / حساب جديد -->
+    <div class="auth-modal-overlay" id="authModalOverlay">
+        <div class="auth-modal">
+            <button class="auth-modal-close" id="authModalClose" aria-label="Close">×</button>
+
+            <div class="auth-tabs">
+                <button type="button" class="auth-tab active" data-authtab="login">تسجيل الدخول</button>
+                <button type="button" class="auth-tab" data-authtab="signup">حساب جديد</button>
+            </div>
+
+            <!-- تسجيل الدخول -->
+            <div class="auth-panel active" id="authPanelLogin">
+                <div class="auth-method-tabs">
+                    <button type="button" class="auth-method-btn active" data-method="phone">📱 موبايل</button>
+                    <button type="button" class="auth-method-btn" data-method="email">✉️ إيميل</button>
+                </div>
+
+                <form id="loginFormPhone" class="auth-form">
+                    <label>رقم الموبايل</label>
+                    <input type="tel" id="loginPhone" required placeholder="01xxxxxxxxx" pattern="[0-9]{10,15}">
+                    <label>كلمة المرور</label>
+                    <input type="password" id="loginPhonePass" required>
+                    <button type="submit" class="btn-primary auth-submit-btn">دخول</button>
+                </form>
+
+                <form id="loginFormEmail" class="auth-form hidden">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" id="loginEmail" required>
+                    <label>كلمة المرور</label>
+                    <input type="password" id="loginEmailPass" required>
+                    <button type="submit" class="btn-primary auth-submit-btn">دخول</button>
+                </form>
+
+                <p class="auth-error" id="loginError"></p>
+            </div>
+
+            <!-- حساب جديد -->
+            <div class="auth-panel" id="authPanelSignup">
+                <div class="auth-method-tabs">
+                    <button type="button" class="auth-method-btn active" data-method="phone">📱 موبايل</button>
+                    <button type="button" class="auth-method-btn" data-method="email">✉️ إيميل</button>
+                </div>
+
+                <form id="signupFormPhone" class="auth-form">
+                    <label>الاسم بالكامل</label>
+                    <input type="text" id="signupNamePhone" required>
+                    <label>رقم الموبايل</label>
+                    <input type="tel" id="signupPhone" required placeholder="01xxxxxxxxx" pattern="[0-9]{10,15}">
+                    <label>كلمة المرور</label>
+                    <input type="password" id="signupPhonePass" required minlength="6" placeholder="6 أحرف على الأقل">
+                    <button type="submit" class="btn-primary auth-submit-btn">إنشاء الحساب</button>
+                </form>
+
+                <form id="signupFormEmail" class="auth-form hidden">
+                    <label>الاسم بالكامل</label>
+                    <input type="text" id="signupNameEmail" required>
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" id="signupEmail" required>
+                    <label>كلمة المرور</label>
+                    <input type="password" id="signupEmailPass" required minlength="6" placeholder="6 أحرف على الأقل">
+                    <button type="submit" class="btn-primary auth-submit-btn">إنشاء الحساب</button>
+                </form>
+
+                <p class="auth-error" id="signupError"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- شاشة تأكيد الطلب الفخمة -->
+    <div class="order-success-overlay" id="orderSuccessOverlay">
+        <div class="order-success-card">
+            <button type="button" class="order-success-close" id="orderSuccessClose" aria-label="إغلاق">×</button>
+            <div class="order-success-icon">🎁</div>
+            <h2 id="orderSuccessTitle">طلبكِ وصلنا بنجاح</h2>
+            <p class="order-success-msg" id="orderSuccessMsg"></p>
+            <div class="order-success-number" id="orderSuccessNumber"></div>
+            <div class="order-success-summary" id="orderSuccessSummary"></div>
+            <p class="order-success-note">هنراجع طلبكِ وهنتواصل معاكي قريب 💕</p>
+            <div class="order-success-actions">
+                <button type="button" class="btn-primary" id="orderSuccessContinue">متابعة التسوق</button>
+                <a href="#myorders" class="order-success-link" id="orderSuccessOrders">عرض طلباتي</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>لوحة تحكم Handmade</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- ===== شاشة الدخول ===== -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-box">
+      <div class="login-logo">Handmade</div>
+      <p class="login-sub">لوحة التحكم</p>
+      <input type="password" id="loginPassword" placeholder="كلمة المرور" autocomplete="current-password">
+      <button id="loginBtn">دخول</button>
+      <p id="loginError" class="login-error"></p>
+    </div>
+  </div>
+
+  <!-- ===== لوحة التحكم ===== -->
+  <div id="dashboard" class="dashboard hidden">
+
+    <aside class="sidebar">
+      <div class="sidebar-logo">Handmade<span>لوحة التحكم</span></div>
+      <nav class="sidebar-nav">
+        <button class="nav-btn active" data-tab="products">🛍️ المنتجات</button>
+        <button class="nav-btn" data-tab="orders">📦 الطلبات <span class="nav-badge" id="newOrdersBadge"></span></button>
+        <button class="nav-btn" data-tab="customers">👥 العملاء</button>
+        <button class="nav-btn" data-tab="coupons">🎟️ كوبونات</button>
+        <button class="nav-btn" data-tab="reviews">⭐ التقييمات</button>
+        <button class="nav-btn" data-tab="settings">⚙️ إعدادات</button>
+      </nav>
+      <button id="logoutBtn" class="logout-btn">🚪 خروج</button>
+    </aside>
+
+    <main class="main-content">
+
+      <!-- ===== تاب المنتجات ===== -->
+      <section id="tab-products" class="tab-panel active">
+        <div class="panel-header">
+          <h1>المنتجات <span id="productsCount" class="count-badge"></span></h1>
+          <div class="panel-actions">
+            <input type="text" id="productSearch" placeholder="🔍 ابحث عن منتج...">
+            <button id="addProductBtn" class="primary-btn">+ إضافة منتج</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="productsTable">
+            <thead>
+              <tr>
+                <th>الصورة</th><th>الاسم</th><th>القسم</th><th>السعر</th>
+                <th>الحالة</th><th>المخزون</th><th>إجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="productsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===== تاب الطلبات ===== -->
+      <section id="tab-orders" class="tab-panel">
+        <div class="panel-header">
+          <h1>الطلبات <span id="ordersCount" class="count-badge"></span></h1>
+          <div class="panel-actions">
+            <select id="orderStatusFilter">
+              <option value="all">كل الحالات</option>
+              <option value="تم الاستلام">تم الاستلام</option>
+              <option value="جاري التنفيذ">جاري التنفيذ</option>
+              <option value="تم الشحن">تم الشحن</option>
+              <option value="تم التسليم">تم التسليم</option>
+              <option value="ملغي">ملغي</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="ordersTable">
+            <thead>
+              <tr>
+                <th>رقم الطلب</th><th>العميل</th><th>الموبايل</th><th>الإجمالي</th>
+                <th>الحالة</th><th>التاريخ</th><th>إجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===== تاب العملاء ===== -->
+      <section id="tab-customers" class="tab-panel">
+        <div class="panel-header">
+          <h1>العملاء <span id="customersCount" class="count-badge"></span></h1>
+          <div class="panel-actions">
+            <input type="text" id="customerSearch" placeholder="🔍 ابحث باسم أو موبايل...">
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="customersTable">
+            <thead>
+              <tr>
+                <th>الاسم</th><th>الموبايل</th><th>الإيميل</th>
+                <th>تاريخ التسجيل</th><th>عدد الطلبات</th><th>إجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="customersTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+
+      <!-- ===== تاب الكوبونات ===== -->
+      <section id="tab-coupons" class="tab-panel">
+        <div class="panel-header">
+          <h1>كوبونات الخصم <span id="couponsCount" class="count-badge"></span></h1>
+          <div class="panel-actions">
+            <button id="addCouponBtn" class="primary-btn">+ كوبون جديد</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="couponsTable">
+            <thead>
+              <tr>
+                <th>الكود</th><th>الخصم</th><th>الاستخدام</th><th>الحالة</th><th>الانتهاء</th><th>إجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="couponsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===== تاب التقييمات ===== -->
+      <section id="tab-reviews" class="tab-panel">
+        <div class="panel-header">
+          <h1>التقييمات <span id="reviewsCount" class="count-badge"></span></h1>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="reviewsTable">
+            <thead>
+              <tr>
+                <th>المنتج</th><th>العميلة</th><th>التقييم</th><th>التعليق</th><th>التاريخ</th><th>إجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="reviewsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===== تاب الإعدادات ===== -->
+      <section id="tab-settings" class="tab-panel">
+        <div class="panel-header">
+          <h1>إعدادات الموقع</h1>
+        </div>
+        <div class="stats-row" id="statsRow">
+          <div class="stat-card"><div class="stat-val" id="statOrdersToday">0</div><div class="stat-label">طلبات اليوم</div></div>
+          <div class="stat-card"><div class="stat-val" id="statOrdersTotal">0</div><div class="stat-label">كل الطلبات</div></div>
+          <div class="stat-card"><div class="stat-val" id="statRevenue">0</div><div class="stat-label">إجمالي المبيعات (ج.م)</div></div>
+          <div class="stat-card"><div class="stat-val" id="statProducts">0</div><div class="stat-label">منتجات ظاهرة</div></div>
+        </div>
+        <form id="settingsForm" class="settings-form">
+          <div class="form-row">
+            <div class="form-col">
+              <label>رقم واتساب الطلبات</label>
+              <input type="text" id="set_whatsapp" dir="ltr" placeholder="012xxxxxxxx">
+            </div>
+            <div class="form-col">
+              <label>حد الشحن المجاني (جنيه)</label>
+              <input type="number" id="set_free_shipping" min="0" step="1">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>رقم اتصالات كاش</label>
+              <input type="text" id="set_wallet" dir="ltr">
+            </div>
+            <div class="form-col">
+              <label>إنستاباي</label>
+              <input type="text" id="set_instapay" dir="ltr">
+            </div>
+          </div>
+          <div class="form-col" style="margin-bottom:14px">
+            <label>نص شريط الإعلان أعلى الموقع</label>
+            <input type="text" id="set_announcement" placeholder="🎁 شحن مجاني · ✨ تصميمات حصرية">
+            <small style="color:#a9906f;font-size:12px">تقدري تفصلي الجمل بـ · عشان تتحرك في الشريط</small>
+          </div>
+
+          <h3 style="margin:18px 0 12px;color:#7a5a3d;font-size:15px">🏠 بانر الصفحة الرئيسية</h3>
+          <div class="form-col" style="margin-bottom:12px">
+            <label>شارة صغيرة فوق العنوان</label>
+            <input type="text" id="set_hero_badge" placeholder="تصميمات يدوية فخمة">
+          </div>
+          <div class="form-col" style="margin-bottom:12px">
+            <label>العنوان الرئيسي</label>
+            <input type="text" id="set_hero_title" placeholder="تفاصيل صغيرة تصنع بيتًا أكثر جمالًا">
+          </div>
+          <div class="form-col" style="margin-bottom:12px">
+            <label>الجملة التوضيحية</label>
+            <textarea id="set_hero_text" rows="2" placeholder="مكرمية، خيش، مرايات..."></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>نص زر البانر</label>
+              <input type="text" id="set_hero_btn" placeholder="شاهدي المنتجات">
+            </div>
+            <div class="form-col">
+              <label>رابط صورة البانر (اختياري)</label>
+              <input type="url" id="set_hero_image" dir="ltr" placeholder="https://...">
+            </div>
+          </div>
+          <p style="font-size:12px;color:#a9906f;margin:0 0 14px">ارفعِي صورة من تاب المنتجات وانسخي اللينك هنا، أو سيبيه فاضي للخلفية الافتراضية.</p>
+
+          <h3 style="margin:18px 0 12px;color:#7a5a3d;font-size:15px">🎁 رسالة بعد إتمام الطلب</h3>
+          <div class="form-col" style="margin-bottom:12px">
+            <label>عنوان رسالة الشكر</label>
+            <input type="text" id="set_thankyou_title" placeholder="طلبكِ وصلنا بنجاح 🎁">
+          </div>
+          <div class="form-col" style="margin-bottom:14px">
+            <label>نص الرسالة</label>
+            <textarea id="set_thankyou_message" rows="3" placeholder="شكرًا لثقتكِ فينا..."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <label>Telegram Bot Token (اختياري — إشعار طلبات)</label>
+              <input type="text" id="set_tg_token" dir="ltr" placeholder="123456:ABC...">
+            </div>
+            <div class="form-col">
+              <label>Telegram Chat ID</label>
+              <input type="text" id="set_tg_chat" dir="ltr" placeholder="-100...">
+            </div>
+          </div>
+          <p style="font-size:12px;color:#a9906f;margin:8px 0 14px">للإشعارات: اعملي بوت من @BotFather وخدي Chat ID من @userinfobot بعد ما تبعثي رسالة للبوت.</p>
+          <button type="submit" class="primary-btn form-submit-btn">حفظ الإعدادات</button>
+        </form>
+        <div class="danger-zone" style="margin-top:28px;padding:18px;border:1.5px solid #f5c6c0;border-radius:14px;background:#fff5f4;max-width:720px">
+          <h3 style="color:#c0392b;font-size:16px;margin-bottom:8px">منطقة خطرة</h3>
+          <p style="font-size:13px;color:#7c6350;margin-bottom:12px;line-height:1.7">حذف كل الطلبات التجريبية والبدء من صفر. الإجراء لا يمكن التراجع عنه.</p>
+          <button type="button" id="clearOrdersBtn" class="primary-btn" style="background:linear-gradient(135deg,#c0392b,#e74c3c)">🗑️ حذف كل الطلبات</button>
+          <button type="button" id="resetCouponsBtn" class="secondary-btn" style="margin-right:8px;margin-top:8px">🔄 تصفير استخدامات الكوبونات</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== نافذة إضافة/تعديل منتج ===== -->
+  <div class="modal-overlay" id="productModalOverlay">
+    <div class="modal-box">
+      <button class="modal-close" id="productModalClose">×</button>
+      <h2 id="productModalTitle">إضافة منتج جديد</h2>
+      <form id="productForm">
+        <input type="hidden" id="pf_id">
+        <div class="form-row">
+          <div class="form-col">
+            <label>الاسم *</label>
+            <input type="text" id="pf_name_ar" required>
+          </div>
+          <div class="form-col">
+            <label>القسم *</label>
+            <select id="pf_category" required>
+              <option value="مفارش">مفارش</option>
+              <option value="مرايات">مرايات مزيّنة</option>
+              <option value="مكرمية">مكرمية</option>
+              <option value="خيش">خيش</option>
+              <option value="ديكور">ديكورات منزلية</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-col">
+            <label>المخزون</label>
+            <input type="number" id="pf_stock" value="100" min="0">
+          </div>
+          <div class="form-col">
+            <label>السعر الحالي (جنيه) *</label>
+            <input type="number" id="pf_price" required min="0" step="0.01">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-col">
+            <label>السعر قبل الخصم (اختياري)</label>
+            <input type="number" id="pf_discount_price" min="0" step="0.01">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-col" style="grid-column:1/-1">
+            <label>الوصف</label>
+            <textarea id="pf_description_ar" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="form-row checkboxes">
+          <label><input type="checkbox" id="pf_bestseller"> الأكثر مبيعاً</label>
+          <label><input type="checkbox" id="pf_new"> منتج جديد</label>
+          <label><input type="checkbox" id="pf_coming_soon"> قريباً (بدون سعر/صور)</label>
+          <label><input type="checkbox" id="pf_active" checked> ظاهر في الموقع</label>
+        </div>
+
+        <label>صور المنتج</label>
+        <div class="dropzone" id="dropzone">
+          <p>📤 اسحب الصور هنا أو دوس للاختيار</p>
+          <input type="file" id="fileInput" accept="image/*" multiple hidden>
+        </div>
+        <div class="image-preview-grid" id="imagePreviewGrid"></div>
+
+        <button type="submit" class="primary-btn form-submit-btn" id="productFormSubmit">حفظ المنتج</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== نافذة تفاصيل الطلب ===== -->
+  <div class="modal-overlay" id="orderModalOverlay">
+    <div class="modal-box">
+      <button class="modal-close" id="orderModalClose">×</button>
+      <div id="orderModalBody"></div>
+    </div>
+  </div>
+
+  <!-- ===== نافذة تفاصيل عميل ===== -->
+  <div class="modal-overlay" id="customerModalOverlay">
+    <div class="modal-box">
+      <button class="modal-close" id="customerModalClose">×</button>
+      <div id="customerModalBody"></div>
+    </div>
+  </div>
+
+  <div id="adminToast" class="admin-toast"></div>
+
+  
+  <!-- مودال كوبون -->
+  <div class="modal-overlay" id="couponModalOverlay">
+    <div class="modal-box">
+      <button class="modal-close" id="couponModalClose">×</button>
+      <h2 id="couponModalTitle">كوبون جديد</h2>
+      <form id="couponForm">
+        <input type="hidden" id="cf_id">
+        <div class="form-row">
+          <div class="form-col">
+            <label>كود الخصم *</label>
+            <input type="text" id="cf_code" required placeholder="مثلاً MAMA50" style="text-transform:uppercase">
+          </div>
+          <div class="form-col">
+            <label>نوع الخصم</label>
+            <select id="cf_type">
+              <option value="fixed">مبلغ ثابت (جنيه)</option>
+              <option value="percent">نسبة مئوية %</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-col">
+            <label>قيمة الخصم *</label>
+            <input type="number" id="cf_value" required min="0" step="0.01" placeholder="50">
+          </div>
+          <div class="form-col">
+            <label>الحد الإجمالي للكود (لكل الناس)</label>
+            <input type="number" id="cf_max_uses" value="1000" min="1" step="1">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-col">
+            <label>كام مرة لكل عميل (بالموبايل)</label>
+            <input type="number" id="cf_max_per_customer" value="1" min="1" step="1">
+          </div>
+          <div class="form-col">
+            <label>تاريخ الانتهاء (اختياري)</label>
+            <input type="date" id="cf_expires">
+          </div>
+          <div class="form-col">
+            <label style="display:flex;align-items:center;gap:8px;margin-top:28px">
+              <input type="checkbox" id="cf_active" checked> مفعّل
+            </label>
+          </div>
+        </div>
+        <div class="form-col" style="margin-bottom:14px">
+          <label>ملاحظة داخلية</label>
+          <input type="text" id="cf_note" placeholder="اختياري">
+        </div>
+        <button type="submit" class="primary-btn form-submit-btn" id="couponFormSubmit">حفظ الكوبون</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
